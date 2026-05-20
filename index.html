@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RCM Billing — Healthcare Revenue Cycle Management | AgentPay Labs</title>
+<meta name="description" content="Full-cycle healthcare billing software. Claims submission, denial management, ERA 835 processing, and revenue analytics. $99/mo starter.">
+<meta property="og:title" content="RCM Billing — End-to-End Healthcare Revenue Cycle Management">
+<meta property="og:description" content="Submit claims, fight denials, process ERA 835 remittances, and track revenue — all in one clean dashboard. From $99/mo.">
+<meta property="og:image" content="https://rumblingb.github.io/agentpay-highway/og.png">
+<meta property="og:url" content="https://rumblingb.github.io/rcm-billing/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://rumblingb.github.io/rcm-billing/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"RCM Billing","description":"Healthcare Revenue Cycle Management SaaS — claims, denials, ERA 835, revenue analytics","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":[{"@type":"Offer","name":"Starter","price":"99","priceCurrency":"USD","billingPeriod":"P1M"},{"@type":"Offer","name":"Professional","price":"499","priceCurrency":"USD","billingPeriod":"P1M"}],"author":{"@type":"Organization","name":"AgentPay Labs","url":"https://rumblingb.github.io"}}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#f8fafc;--white:#ffffff;--navy:#0f172a;--blue:#2563eb;--blue-d:#1d4ed8;--green:#16a34a;--red:#dc2626;--amber:#d97706;--text:#0f172a;--muted:#64748b;--border:#e2e8f0;--radius:12px}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;padding:0 2rem}
+.nav-inner{max-width:1200px;margin:0 auto;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:.6rem;font-weight:800;color:var(--navy);font-size:1.05rem}
+.nav-logo .badge{width:32px;height:32px;background:var(--blue);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:.85rem}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;font-weight:500;transition:color .15s}
+.nav-links a:hover{color:var(--navy)}
+.nav-cta{background:var(--blue);color:#fff!important;padding:.45rem 1.1rem;border-radius:6px;font-weight:600!important;font-size:.85rem!important}
+.nav-cta:hover{background:var(--blue-d)!important}
+
+/* HERO */
+.hero{background:var(--navy);color:#fff;padding:6rem 2rem 5rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;right:-20%;width:600px;height:600px;border-radius:50%;background:rgba(37,99,235,.12);pointer-events:none}
+.hero-inner{max-width:900px;margin:0 auto;text-align:center;position:relative}
+.hero-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(37,99,235,.2);border:1px solid rgba(37,99,235,.35);color:#93c5fd;padding:.28rem .9rem;border-radius:99px;font-size:.75rem;font-weight:600;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:.07em}
+.hero h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:900;line-height:1.08;margin-bottom:1rem;letter-spacing:-.03em}
+.hero h1 em{font-style:normal;background:linear-gradient(135deg,#60a5fa,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:1.1rem;color:#94a3b8;max-width:560px;margin:0 auto 2.5rem;line-height:1.7}
+.hero-btns{display:flex;gap:.85rem;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:.95rem;transition:all .2s}
+.btn-primary{background:var(--blue);color:#fff;box-shadow:0 4px 20px rgba(37,99,235,.4)}
+.btn-primary:hover{background:var(--blue-d);transform:translateY(-2px)}
+.btn-secondary{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.15)}
+.btn-secondary:hover{background:rgba(255,255,255,.14)}
+
+/* TRUST BAR */
+.trust{border-bottom:1px solid var(--border);background:var(--white);padding:1rem 2rem}
+.trust-inner{max-width:1000px;margin:0 auto;display:flex;gap:2.5rem;justify-content:center;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--muted);font-weight:600}
+
+/* SECTION */
+.section{padding:5rem 2rem;max-width:1200px;margin:0 auto}
+.section-center{text-align:center;margin-bottom:3.5rem}
+.section-label{font-size:.72rem;font-weight:800;color:var(--blue);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem}
+.section-title{font-size:clamp(1.7rem,3vw,2.3rem);font-weight:900;margin-bottom:.6rem;letter-spacing:-.02em}
+.section-sub{color:var(--muted);font-size:1rem;max-width:540px;margin:0 auto;line-height:1.65}
+
+/* FEATURES */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.25rem}
+.feature-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;transition:all .22s}
+.feature-card:hover{border-color:var(--blue);box-shadow:0 8px 30px rgba(0,0,0,.08);transform:translateY(-2px)}
+.feature-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1rem}
+.feature-card h3{font-size:1rem;font-weight:800;margin-bottom:.35rem;color:var(--navy)}
+.feature-card p{font-size:.85rem;color:var(--muted);line-height:1.55}
+
+/* DASHBOARD PREVIEW */
+.preview-section{background:var(--navy);padding:5rem 2rem}
+.preview-inner{max-width:1000px;margin:0 auto;text-align:center}
+.preview-inner .section-title{color:#fff}
+.preview-inner .section-sub{color:#94a3b8}
+.mock-dashboard{background:#1e293b;border-radius:16px;border:1px solid #334155;padding:1.5rem;margin-top:2.5rem;text-align:left}
+.mock-topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem}
+.mock-logo{display:flex;align-items:center;gap:.5rem;color:#fff;font-weight:700;font-size:.9rem}
+.mock-logo-badge{width:26px;height:26px;background:var(--blue);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:900;color:#fff}
+.mock-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin-bottom:1.25rem}
+.mock-kpi{background:#0f172a;border-radius:8px;padding:.9rem;border:1px solid #1e293b}
+.mock-kpi .num{font-size:1.3rem;font-weight:800;color:#fff}
+.mock-kpi .lbl{font-size:.65rem;color:#64748b;margin-top:.15rem}
+.mock-table{background:#0f172a;border-radius:8px;border:1px solid #1e293b;overflow:hidden}
+.mock-th{display:grid;grid-template-columns:120px 1fr 80px 80px 90px;gap:.5rem;padding:.6rem 1rem;background:#1e293b}
+.mock-th span{font-size:.6rem;color:#64748b;font-weight:700;text-transform:uppercase}
+.mock-row{display:grid;grid-template-columns:120px 1fr 80px 80px 90px;gap:.5rem;padding:.65rem 1rem;border-top:1px solid #1e293b;align-items:center}
+.mock-row span{font-size:.72rem}
+.mock-id{color:#60a5fa;font-family:monospace;font-weight:700}
+.mock-name{color:#e2e8f0;font-weight:500}
+.mock-amt{color:#e2e8f0;font-weight:700}
+.mock-status{display:inline-block;padding:.15rem .5rem;border-radius:99px;font-size:.6rem;font-weight:700}
+.s-paid{background:rgba(22,163,74,.15);color:#4ade80}
+.s-denied{background:rgba(220,38,38,.15);color:#f87171}
+.s-pending{background:rgba(217,119,6,.15);color:#fbbf24}
+.s-sub{background:rgba(37,99,235,.15);color:#93c5fd}
+
+/* WORKFLOW */
+.workflow{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.5rem;position:relative}
+.workflow-step{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;text-align:center}
+.step-num{width:36px;height:36px;background:var(--blue);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.9rem;margin:0 auto .9rem}
+.workflow-step h3{font-size:.9rem;font-weight:800;margin-bottom:.3rem;color:var(--navy)}
+.workflow-step p{font-size:.8rem;color:var(--muted);line-height:1.5}
+
+/* PRICING */
+.pricing-section{background:var(--bg);padding:5rem 2rem}
+.pricing-inner{max-width:1000px;margin:0 auto}
+.pricing-cards{display:flex;gap:1.25rem;justify-content:center;flex-wrap:wrap;margin-top:2.5rem}
+.plan{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:2rem;flex:1;min-width:240px;max-width:300px;transition:all .22s}
+.plan:hover{box-shadow:0 8px 30px rgba(0,0,0,.1)}
+.plan.featured{border-color:var(--blue);box-shadow:0 4px 20px rgba(37,99,235,.12)}
+.plan-badge{display:inline-block;background:var(--blue);color:#fff;font-size:.65rem;font-weight:800;padding:.15rem .55rem;border-radius:4px;text-transform:uppercase;margin-bottom:.6rem}
+.plan h3{font-size:.85rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.4rem}
+.plan .price{font-size:2.8rem;font-weight:900;color:var(--navy);line-height:1}
+.plan .per{font-size:.85rem;color:var(--muted)}
+.plan .desc{font-size:.85rem;color:var(--muted);margin:.75rem 0 1.25rem;line-height:1.55}
+.plan ul{list-style:none;margin-bottom:1.5rem}
+.plan li{padding:.4rem 0;font-size:.85rem;display:flex;gap:.5rem;border-bottom:1px solid var(--border)}
+.plan li::before{content:"✓";color:var(--green);font-weight:900;flex-shrink:0}
+.plan-btn{display:block;width:100%;padding:.85rem;border-radius:8px;text-align:center;font-weight:700;font-size:.9rem;cursor:pointer;border:none;font-family:inherit;transition:all .15s;text-decoration:none}
+.plan-btn-primary{background:var(--blue);color:#fff}
+.plan-btn-primary:hover{background:var(--blue-d)}
+.plan-btn-secondary{background:transparent;border:1.5px solid var(--border);color:var(--muted)}
+.plan-btn-secondary:hover{border-color:var(--blue);color:var(--blue)}
+
+/* FOOTER */
+footer{background:var(--navy);color:#94a3b8;padding:2.5rem 2rem;text-align:center;font-size:.85rem}
+footer .flinks{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:.75rem}
+footer a{color:#94a3b8;text-decoration:none;transition:color .15s}
+footer a:hover{color:#fff}
+footer .logo{font-weight:900;color:#fff;font-size:1.05rem;margin-bottom:.5rem}
+
+@media(max-width:768px){
+  nav{padding:0 1rem}.nav-links a:not(.nav-cta){display:none}
+  .hero{padding:4rem 1rem 3.5rem}.hero h1{font-size:2.2rem}
+  .mock-kpis{grid-template-columns:repeat(2,1fr)}.mock-th,.mock-row{grid-template-columns:80px 1fr 70px 70px;}.mock-row span:nth-child(4){display:none}.mock-th span:nth-child(4){display:none}
+  .pricing-cards{flex-direction:column;align-items:center}.plan{max-width:100%}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="badge">R</div>
+      RCM Billing
+    </div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#workflow">Workflow</a>
+      <a href="#pricing">Pricing</a>
+      <a href="https://rumblingb.github.io/agentpay-labs-hub/" style="color:#94a3b8;font-size:.8rem">← AgentPay Labs</a>
+      <a href="#pricing" class="nav-cta">Get Started</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">🏥 Healthcare RCM Software</div>
+    <h1>Stop losing revenue<br>to <em>denials and delays.</em></h1>
+    <p>Full-cycle RCM in one dashboard. Submit claims, fight denials with ANSI X12 reason codes, auto-process ERA 835 remittances, and track your revenue in real time.</p>
+    <div class="hero-btns">
+      <a href="#pricing" class="btn btn-primary">Start at $99/mo →</a>
+      <a href="https://github.com/Rumblingb/rcm-billing" class="btn btn-secondary" target="_blank">View Source</a>
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="trust-inner">
+    <div class="trust-item">✅ HIPAA-aware data handling</div>
+    <div class="trust-item">🔐 Stripe billing — cancel anytime</div>
+    <div class="trust-item">📊 X12 837/835/276 EDI support</div>
+    <div class="trust-item">⚡ Powered by AgentPay primitives</div>
+  </div>
+</div>
+
+<section id="features" class="section">
+  <div class="section-center">
+    <div class="section-label">Features</div>
+    <div class="section-title">Everything your billing team needs</div>
+    <div class="section-sub">Built for billing staff who process 50–200 claims a day and managers who need the revenue picture at a glance.</div>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#eff6ff">📋</div>
+      <h3>Claim Submission & Tracking</h3>
+      <p>4-step guided claim entry with CPT/ICD-10 autocomplete. Track every claim from draft → submitted → paid with full audit history.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#fef2f2">🚫</div>
+      <h3>Denial Management Queue</h3>
+      <p>Denied claims surface with ANSI X12 reason codes, actionability scores, and one-click resubmit with corrected data.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#f0fdf4">📄</div>
+      <h3>ERA 835 Processing</h3>
+      <p>Upload or auto-fetch Electronic Remittance Advice files. Auto-match payments to claims. Flag underpayments and post adjustments.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#fffbeb">📈</div>
+      <h3>Revenue Analytics</h3>
+      <p>Collection rates, AR aging buckets (0–30/31–60/61–90/90+ days), denial rates, and days-to-payment trends on one screen.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#f5f3ff">🔐</div>
+      <h3>Prior Auth Management</h3>
+      <p>Track authorization requirements per payer and procedure. Flag missing auth numbers before claim submission — not after denial.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#ecfdf5">⚡</div>
+      <h3>Bulk Operations</h3>
+      <p>Select multiple denied claims and resubmit in bulk. Batch ERA posting. Export to CSV for external reconciliation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Dashboard Preview -->
+<section class="preview-section">
+  <div class="preview-inner">
+    <div class="section-label" style="color:#60a5fa">Live Dashboard</div>
+    <div class="section-title">Everything on one screen</div>
+    <div class="section-sub">Your billing staff see the queue. Your manager sees the revenue. Same login.</div>
+    <div class="mock-dashboard">
+      <div class="mock-topbar">
+        <div class="mock-logo"><div class="mock-logo-badge">R</div>RCM Billing</div>
+        <div style="font-size:.7rem;color:#64748b">Okafor Medical Group · NPI 1234567890</div>
+      </div>
+      <div class="mock-kpis">
+        <div class="mock-kpi"><div class="num" style="color:#4ade80">$74,182</div><div class="lbl">Collected MTD</div></div>
+        <div class="mock-kpi"><div class="num">34</div><div class="lbl">Pending claims</div></div>
+        <div class="mock-kpi"><div class="num" style="color:#f87171">14.3%</div><div class="lbl">Denial rate</div></div>
+        <div class="mock-kpi"><div class="num" style="color:#fbbf24">18.4d</div><div class="lbl">Avg days to pay</div></div>
+      </div>
+      <div class="mock-table">
+        <div class="mock-th">
+          <span>Claim ID</span><span>Patient</span><span>Billed</span><span>Paid</span><span>Status</span>
+        </div>
+        <div class="mock-row"><span class="mock-id">CLM-00123</span><span class="mock-name">Sarah Mitchell</span><span class="mock-amt">$185</span><span class="mock-amt">$113</span><span><span class="mock-status s-paid">Paid</span></span></div>
+        <div class="mock-row"><span class="mock-id">CLM-00124</span><span class="mock-name">Robert Chen</span><span class="mock-amt">$240</span><span class="mock-amt">—</span><span><span class="mock-status s-denied">Denied</span></span></div>
+        <div class="mock-row"><span class="mock-id">CLM-00126</span><span class="mock-name">David Thompson</span><span class="mock-amt">$18,500</span><span class="mock-amt">—</span><span><span class="mock-status s-denied">Denied</span></span></div>
+        <div class="mock-row"><span class="mock-id">CLM-00127</span><span class="mock-name">Jennifer Adams</span><span class="mock-amt">$265</span><span class="mock-amt">—</span><span><span class="mock-status s-sub">Submitted</span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="workflow" class="section">
+  <div class="section-center">
+    <div class="section-label">Workflow</div>
+    <div class="section-title">Full revenue cycle, end to end</div>
+  </div>
+  <div class="workflow">
+    <div class="workflow-step"><div class="step-num">1</div><h3>Enter Claim</h3><p>Patient, CPT code, ICD-10 diagnosis, payer, and billed amount. CPT autocomplete with scrub rules.</p></div>
+    <div class="workflow-step"><div class="step-num">2</div><h3>Submit</h3><p>Clean claim check flags missing fields. Submit to payer via clearinghouse or direct 837 EDI.</p></div>
+    <div class="workflow-step"><div class="step-num">3</div><h3>Track Status</h3><p>Acknowledgement (277), pending, paid, or denied — every status update captured automatically.</p></div>
+    <div class="workflow-step"><div class="step-num">4</div><h3>Work Denials</h3><p>ANSI X12 reason code parsed, actionability scored. Correct and resubmit or escalate to appeal.</p></div>
+    <div class="workflow-step"><div class="step-num">5</div><h3>Process ERA</h3><p>Upload ERA 835. Auto-match to claims. Post payments and adjustments. Flag underpayments.</p></div>
+    <div class="workflow-step"><div class="step-num">6</div><h3>Report</h3><p>AR aging, collection rate, denial rate, and days-to-payment updated in real time.</p></div>
+  </div>
+</section>
+
+<section id="pricing" class="pricing-section">
+  <div class="pricing-inner">
+    <div class="section-center">
+      <div class="section-label">Pricing</div>
+      <div class="section-title">Straightforward billing</div>
+      <div class="section-sub">No setup fees. No per-claim charges. Cancel anytime.</div>
+    </div>
+    <div class="pricing-cards">
+      <div class="plan">
+        <h3>Starter</h3>
+        <div class="price">$99</div><div class="per">/month</div>
+        <div class="desc">For small practices and solo billers up to 100 claims/month.</div>
+        <ul>
+          <li>Up to 100 claims/month</li>
+          <li>Claim submission + tracking</li>
+          <li>Denial queue</li>
+          <li>ERA 835 upload</li>
+          <li>Revenue dashboard</li>
+          <li>1 user seat</li>
+        </ul>
+        <a href="https://buy.stripe.com/bJe00la1xbg05zG5QT1oI1g" class="plan-btn plan-btn-secondary" target="_blank">Get Starter</a>
+      </div>
+      <div class="plan featured">
+        <div class="plan-badge">Most Popular</div>
+        <h3>Professional</h3>
+        <div class="price">$499</div><div class="per">/month</div>
+        <div class="desc">For growing practices and billing departments.</div>
+        <ul>
+          <li>Up to 1,000 claims/month</li>
+          <li>Everything in Starter</li>
+          <li>Bulk resubmit &amp; batch ERA</li>
+          <li>Prior auth tracking</li>
+          <li>5 user seats</li>
+          <li>CSV export</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="https://buy.stripe.com/bJe00la1xbg05zG5QT1oI1g" class="plan-btn plan-btn-primary" target="_blank">Get Professional</a>
+      </div>
+      <div class="plan">
+        <h3>Enterprise</h3>
+        <div class="price" style="font-size:1.8rem;padding-top:.4rem">Custom</div>
+        <div class="desc">For billing companies managing multiple practices.</div>
+        <ul>
+          <li>Unlimited claims</li>
+          <li>Multi-tenant portal</li>
+          <li>Dedicated payer connections</li>
+          <li>Custom EDI integration</li>
+          <li>Unlimited seats</li>
+          <li>SLA + dedicated support</li>
+        </ul>
+        <a href="mailto:vishar.rumbling@gmail.com?subject=RCM%20Enterprise" class="plan-btn plan-btn-secondary">Contact Sales</a>
+      </div>
+    </div>
+    <p style="text-align:center;color:var(--muted);font-size:.8rem;margin-top:1.5rem">Cancel anytime · Billed monthly via Stripe · Powered by AgentPay Labs</p>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">RCM Billing</div>
+  <div class="flinks">
+    <a href="https://github.com/Rumblingb/rcm-billing">GitHub</a>
+    <a href="https://rumblingb.github.io/agentpay-labs-hub/privacy/power-cabinet.html">Privacy Policy</a>
+    <a href="https://rumblingb.github.io/agentpay-labs-hub/">AgentPay Labs</a>
+    <a href="mailto:vishar.rumbling@gmail.com">Contact</a>
+  </div>
+  <p>© 2026 AgentPay Labs — RCM Billing is not a substitute for professional medical billing advice.</p>
+</footer>
+
+</body>
+</html>
