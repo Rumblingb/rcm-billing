@@ -20,14 +20,14 @@
     "@supabase/supabase-js": "^2.49.4"
   },
   "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "typescript": "^5",
-    "tailwindcss": "^3.4.17",
+    "@types/node": "^26",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^7",
+    "tailwindcss": "^4.3.2",
     "postcss": "^8",
     "autoprefixer": "^10",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.29"
+    "eslint": "^10",
+    "eslint-config-next": "16.2.10"
   }
 }
